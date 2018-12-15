@@ -1,8 +1,12 @@
 package pl.kamiljurczak.registration.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Patient {
 
     private int id;
@@ -15,12 +19,16 @@ public class Patient {
     private String country;
     private List<Visit> visitList = new ArrayList<>();
 
+    public Patient() {
+    }
+
     public Patient(String firstName, String lastName, String pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
     }
 
+    @Autowired
     public void bookForAnVisit(Visit visit) {
         visitList.add(visit);
     }
@@ -28,9 +36,37 @@ public class Patient {
     private String getAllPatientsVisits() {
         StringBuilder visitListString = new StringBuilder();
         for (Visit visit : visitList) {
-            visitListString.append("\n").append(visit.getClinic().toString()).append(": ").append(visit.toString());
+            visitListString.append("\n").append(visit.toString());
         }
         return visitListString.toString();
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
