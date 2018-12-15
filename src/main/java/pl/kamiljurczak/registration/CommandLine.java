@@ -2,8 +2,8 @@ package pl.kamiljurczak.registration;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pl.kamiljurczak.registration.domain.Patient;
-import pl.kamiljurczak.registration.domain.Visit;
+import pl.kamiljurczak.registration.domains.Patient;
+import pl.kamiljurczak.registration.domains.Visit;
 
 @Component
 public class CommandLine implements CommandLineRunner {

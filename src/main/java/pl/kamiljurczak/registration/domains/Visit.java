@@ -1,7 +1,6 @@
-package pl.kamiljurczak.registration.domain;
+package pl.kamiljurczak.registration.domains;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -9,7 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
 public class Visit {
 
     private int id;

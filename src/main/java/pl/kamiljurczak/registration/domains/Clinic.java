@@ -1,8 +1,5 @@
-package pl.kamiljurczak.registration.domain;
+package pl.kamiljurczak.registration.domains;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Clinic {
 
     private int id;

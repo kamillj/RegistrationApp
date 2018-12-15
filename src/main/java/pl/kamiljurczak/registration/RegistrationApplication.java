@@ -4,11 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import pl.kamiljurczak.registration.domain.Clinic;
-import pl.kamiljurczak.registration.domain.Patient;
-import pl.kamiljurczak.registration.domain.Visit;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 @ComponentScan({"pl.kamiljurczak.registration"})
@@ -24,6 +19,5 @@ public class RegistrationApplication {
             }
         }
     }
-
 }
 
