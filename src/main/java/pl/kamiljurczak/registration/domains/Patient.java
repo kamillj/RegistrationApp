@@ -67,6 +67,42 @@ public class Patient {
         this.country = country;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public List<Visit> getVisitList() {
+        return visitList;
+    }
+
     @Override
     public String toString() {
         return "Pacjent: " + firstName + " " + lastName + " (" + pesel + ")." + "\nZaplanowane wizyty:" + getAllPatientsVisits();

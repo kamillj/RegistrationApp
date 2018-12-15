@@ -61,6 +61,34 @@ public class Visit {
         this.dateTimeFormat = dateTimeFormat;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public DateFormat getDateFormat() {
+        return dateFormat;
+    }
+
+    public DateFormat getDateTimeFormat() {
+        return dateTimeFormat;
+    }
+
     @Override
     public String toString() {
         return clinic.toString() + ": " + dateFormat.format(date) + " " + dateTimeFormat.format(startTime) + " - " + dateTimeFormat.format(endTime);
