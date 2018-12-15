@@ -1,7 +1,11 @@
 package pl.kamiljurczak.registration.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Patient {
 
+    private long id;
     private String firstName;
     private String lastName;
     private String pesel;
@@ -9,17 +13,28 @@ public class Patient {
     private String zipCode;
     private String address;
     private String country;
-    private Visit visit;
+    private List<Visit> visitList = new ArrayList<>();
 
     public Patient(String firstName, String lastName, String pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
-        this.visit = new Visit("2018-12-12", "10:00", "10:30");
+    }
+
+    public void bookForAnVisit(Visit visit) {
+        visitList.add(visit);
+    }
+
+    private String getAllPatientsVisits() {
+        StringBuilder visitListString = new StringBuilder();
+        for (Visit visit : visitList) {
+            visitListString.append("\n").append(visit.toString());
+        }
+        return visitListString.toString();
     }
 
     @Override
     public String toString() {
-        return "Pacjent: " + firstName + " " + lastName + " (" + pesel + "). Zaplanowana wizyta: " + visit.toString();
+        return "Pacjent: " + firstName + " " + lastName + " (" + pesel + ")." + "\nZaplanowane wizyty:" + getAllPatientsVisits();
     }
 }
