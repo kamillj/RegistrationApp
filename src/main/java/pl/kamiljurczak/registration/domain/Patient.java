@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Patient {
 
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String pesel;
@@ -28,7 +28,7 @@ public class Patient {
     private String getAllPatientsVisits() {
         StringBuilder visitListString = new StringBuilder();
         for (Visit visit : visitList) {
-            visitListString.append("\n").append(visit.toString());
+            visitListString.append("\n").append(visit.getClinic().toString()).append(": ").append(visit.toString());
         }
         return visitListString.toString();
     }

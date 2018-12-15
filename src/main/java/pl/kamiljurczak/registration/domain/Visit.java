@@ -9,21 +9,28 @@ import java.util.Date;
 
 public class Visit {
 
+    private int id;
     private Date date;
     private Timestamp startTime;
     private Timestamp endTime;
+    private Clinic clinic;
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private DateFormat dateTimeFormat = new SimpleDateFormat("hh:mm");
 
-    public Visit(String date, String startTime, String endTime) {
+    public Visit(String date, String startTime, String endTime, String clinic) {
         try {
             this.date = dateFormat.parse(date);
             this.startTime = new Timestamp(dateTimeFormat.parse(startTime).getTime());
             this.endTime = new Timestamp(dateTimeFormat.parse(endTime).getTime());
+            this.clinic = new Clinic(clinic);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public Clinic getClinic() {
+        return clinic;
     }
 
     @Override
