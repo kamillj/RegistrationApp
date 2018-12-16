@@ -14,5 +14,5 @@ public interface PatientService {
 
     void deletePatient(int id);
 
-    List<Patient> getPatientList();
+    List<Patient> getPatients();
 }

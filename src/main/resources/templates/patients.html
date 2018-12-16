@@ -17,6 +17,10 @@
             <td>Nazwisko</td>
             <td>Imię</td>
             <td>Pesel</td>
+            <td>Państwo</td>
+            <td>Miejscowość</td>
+            <td>Kod pocztowy</td>
+            <td>Adres</td>
         </tr>
         </thead>
         <tbody>
@@ -24,11 +28,15 @@
             <td th:text="${patient.lastName}"></td>
             <td th:text="${patient.firstName}"></td>
             <td th:text="${patient.pesel}"></td>
+            <td th:text="${patient.country}"></td>
+            <td th:text="${patient.city}"></td>
+            <td th:text="${patient.zipCode}"></td>
+            <td th:text="${patient.address}"></td>
         </tr>
         </tbody>
     </table>
     <div class="row">
-        <a href="/newKnight">Dodaj nowego pacjenta</a>
+        <a href="/patient/add">Dodaj nowego pacjenta</a>
     </div>
 </div>
 </body>

@@ -15,10 +15,11 @@ public class Patient {
     private String firstName;
     private String lastName;
     private String pesel;
+    private String country;
     private String city;
     private String zipCode;
     private String address;
-    private String country;
+
     @OneToMany
     private List<Visit> visits = new ArrayList<>();
 
@@ -29,6 +30,16 @@ public class Patient {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
+    }
+
+    public Patient(String firstName, String lastName, String pesel, String country, String city, String zipCode, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.pesel = pesel;
+        this.country = country;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.address = address;
     }
 
     public void bookForAnVisit(Visit visit) {

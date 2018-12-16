@@ -6,7 +6,7 @@ import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.domains.repositories.PatientRepository;
 import pl.kamiljurczak.registration.services.PatientService;
 
-
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -20,6 +20,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    @Transactional
     public void savePatient(Patient patient) {
         patientRepository.savePatient(patient);
     }
@@ -40,7 +41,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> getPatientList() {
-        return null;
+    public List<Patient> getPatients() {
+       return patientRepository.getPatients();
     }
 }

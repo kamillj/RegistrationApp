@@ -21,12 +21,12 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-//    @RequestMapping
-//    public String getPatientsList(Model model) {
-//        List<Patient> patients = patientService.getPatientList();
-//        model.addAttribute("patients", patients);
-//        return "patients";
-//    }
+    @RequestMapping("/patients")
+    public String getPatientsList(Model model) {
+        List<Patient> patients = patientService.getPatients();
+        model.addAttribute("patients", patients);
+        return "patients";
+    }
 
     @RequestMapping("/patient/add")
     public String getPatientForm(Model model) {
@@ -37,6 +37,6 @@ public class PatientController {
     @RequestMapping(value = "/patient/add", method = RequestMethod.POST)
     public String savePatient(@ModelAttribute Patient patient) {
         patientService.savePatient(patient);
-        return "patientForm";
+        return "redirect:/patients";
     }
 }

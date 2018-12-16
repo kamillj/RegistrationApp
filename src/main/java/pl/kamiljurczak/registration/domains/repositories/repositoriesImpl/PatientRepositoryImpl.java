@@ -7,7 +7,9 @@ import pl.kamiljurczak.registration.domains.repositories.PatientRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import java.util.List;
+
 
 @Repository
 public class PatientRepositoryImpl implements PatientRepository {
@@ -40,7 +42,7 @@ public class PatientRepositoryImpl implements PatientRepository {
     }
 
     @Override
-    public List<Patient> getPatientList() {
-        return null;
+    public List<Patient> getPatients() {
+        return em.createQuery("from Patient as p order by p.lastName", Patient.class).getResultList();
     }
 }
