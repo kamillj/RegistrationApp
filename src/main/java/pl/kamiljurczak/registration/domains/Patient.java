@@ -2,11 +2,15 @@ package pl.kamiljurczak.registration.domains;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Patient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName;
     private String lastName;
@@ -15,7 +19,8 @@ public class Patient {
     private String zipCode;
     private String address;
     private String country;
-    private List<Visit> visitList = new ArrayList<>();
+    @OneToMany
+    private List<Visit> visits = new ArrayList<>();
 
     public Patient() {
     }
@@ -26,14 +31,13 @@ public class Patient {
         this.pesel = pesel;
     }
 
-    @Autowired
     public void bookForAnVisit(Visit visit) {
-        visitList.add(visit);
+        visits.add(visit);
     }
 
     private String getAllPatientsVisits() {
         StringBuilder visitListString = new StringBuilder();
-        for (Visit visit : visitList) {
+        for (Visit visit : visits) {
             visitListString.append("\n").append(visit.toString());
         }
         return visitListString.toString();
@@ -99,8 +103,8 @@ public class Patient {
         return country;
     }
 
-    public List<Visit> getVisitList() {
-        return visitList;
+    public List<Visit> getVisits() {
+        return visits;
     }
 
     @Override

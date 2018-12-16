@@ -2,18 +2,23 @@ package pl.kamiljurczak.registration.domains;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
 public class Visit {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private Date date;
     private Timestamp startTime;
     private Timestamp endTime;
+    @OneToOne
     private Clinic clinic;
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -40,7 +45,6 @@ public class Visit {
         }
     }
 
-    @Autowired
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
     }

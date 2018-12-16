@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add knight</title>
+    <title>Zapisz pacjenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-horizontal" th:object="${patient}" th:action="@{/registration}" th:method="post">
+    <form class="form-horizontal" th:object="${patient}" th:action="@{/patients}" th:method="post">
         <div class="form-group">
             <label class="control-label">Imie:</label>
             <input type="text" class="form-control" th:field="*{firstName}"/>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pacjenci</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Nazwisko</td>
+            <td>Imię</td>
+            <td>Pesel</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" patient : ${patients}">
+            <td th:text="${patient.lastName}"></td>
+            <td th:text="${patient.firstName}"></td>
+            <td th:text="${patient.pesel}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <a href="/newKnight">Dodaj nowego pacjenta</a>
+    </div>
+</div>
+</body>
+</html>
