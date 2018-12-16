@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@ComponentScan({"pl.kamiljurczak.registration"})
+@ComponentScan({"pl.kamiljurczak.registration"})
 public class RegistrationApplication {
 
     public static void main(String[] args) {
