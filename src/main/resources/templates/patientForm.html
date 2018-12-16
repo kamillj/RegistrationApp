@@ -24,6 +24,22 @@
             <label class="control-label">PESEL:</label>
             <input type="text" class="form-control" th:field="*{pesel}"/>
         </div>
+        <div class="form-group">
+            <label class="control-label">Państwo:</label>
+            <input type="text" class="form-control" th:field="*{country}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Miejscowość:</label>
+            <input type="text" class="form-control" th:field="*{city}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Kod pocztowy:</label>
+            <input type="text" class="form-control" th:field="*{zipCode}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Adres:</label>
+            <input type="text" class="form-control" th:field="*{address}"/>
+        </div>
         <div class="row">
             <button type="submit" class="btn btn-default">Zapisz pacjenta</button>
         </div>
