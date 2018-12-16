@@ -7,8 +7,8 @@ import pl.kamiljurczak.registration.domains.repositories.repositoriesImpl.Patien
 @Configuration
 public class ApplicationConfig {
 
-    @Bean(name = "patientRepositoryImpl")
-    public PatientRepositoryImpl createDB(){
-        return new PatientRepositoryImpl();
-    }
+//    @Bean(name = "patientRepositoryImpl")
+//    public PatientRepositoryImpl createDB(){
+//        return new PatientRepositoryImpl();
+//    }
 }

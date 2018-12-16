@@ -1,15 +1,28 @@
 package pl.kamiljurczak.registration.domains.repositories.repositoriesImpl;
 
+import org.springframework.stereotype.Repository;
 import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.domains.repositories.PatientRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
 public class PatientRepositoryImpl implements PatientRepository {
 
-    @Override
-    public void savePatient(Patient patient) {
+    private EntityManager em;
 
+    @PersistenceContext
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+    @Override
+    @Transactional
+    public void savePatient(Patient patient) {
+        em.persist(patient);
     }
 
     @Override

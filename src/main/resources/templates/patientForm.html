@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-horizontal" th:object="${patient}" th:action="@{/patients}" th:method="post">
+    <form class="form-horizontal" th:object="${patient}" th:action="@{/patient/add}" th:method="post">
         <div class="form-group">
             <label class="control-label">Imie:</label>
             <input type="text" class="form-control" th:field="*{firstName}"/>

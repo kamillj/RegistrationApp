@@ -1,7 +1,5 @@
 package pl.kamiljurczak.registration.domains;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.DateFormat;
