@@ -9,9 +9,9 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
-@Repository
 public class PatientRepositoryImpl implements PatientRepository {
 
     private EntityManager em;
@@ -54,6 +54,13 @@ public class PatientRepositoryImpl implements PatientRepository {
 
     @Override
     public List<Patient> getPatients() {
-        return em.createQuery("from Patient as p order by p.lastName", Patient.class).getResultList();
+        return em.createQuery("from Patient p order by p.lastName", Patient.class).getResultList();
+    }
+
+    @Override
+    public Optional<Patient> getPatientByPesel(String pesel) {
+        Patient patient = em.createQuery("from Patient p where p.pesel=:pesel", Patient.class)
+                .setParameter("pesel", pesel).getSingleResult();
+        return Optional.ofNullable(patient);
     }
 }

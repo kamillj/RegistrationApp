@@ -3,10 +3,12 @@ package pl.kamiljurczak.registration.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.services.PatientService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -33,8 +35,13 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/add", method = RequestMethod.POST)
-    public String savePatient(@ModelAttribute Patient patient) {
-        patientService.savePatient(patient);
+    public String savePatient(@ModelAttribute @Valid Patient patient, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getObjectName() + " " + error.getDefaultMessage()));
+            return "patientForm";
+        } else {
+            patientService.savePatient(patient);
+        }
         return "redirect:/patients";
     }
 
@@ -52,8 +59,13 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/edit/{id}", method = RequestMethod.POST)
-    public String updatePatient(@ModelAttribute Patient patient, @PathVariable Integer id) {
-        patientService.updatePatient(patient, id);
+    public String updatePatient(@ModelAttribute @Valid Patient patient, @PathVariable Integer id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getObjectName() + " " + error.getDefaultMessage()));
+            return "patient";
+        } else {
+            patientService.updatePatient(patient, id);
+        }
         return "redirect:/patients";
     }
 }

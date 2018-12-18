@@ -1,8 +1,10 @@
 package pl.kamiljurczak.registration.domains;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import pl.kamiljurczak.registration.validators.IsPeselValid;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,14 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotNull
+    @Size(min = 1, message = "Nie wprowadzono imienia")
     private String firstName;
+    @NotNull
+    @Size(min = 1, message = "Nie wprowadzono nazwiska")
     private String lastName;
+    @Column(unique = true)
+    @IsPeselValid
     private String pesel;
     private String country;
     private String city;

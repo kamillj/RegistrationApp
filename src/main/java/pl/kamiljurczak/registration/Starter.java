@@ -27,9 +27,9 @@ public class Starter implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Patient janKowalski = new Patient("Jan", "Kowalski", "75110355782",
+        Patient janKowalski = new Patient("Jan", "Kowalski", "90071900956",
                 "Polska", "Siedlce", "08-110", "10. Lutego 4");
-        Patient andrzejKania = new Patient("Andrzej", "Kania", "86022466523",
+        Patient andrzejKania = new Patient("Andrzej", "Kania", "91111106820",
                 "Polska", "Lublin", "20-049", "Al. Racławickie 157");
         patientService.savePatient(janKowalski);
         patientService.savePatient(andrzejKania);

@@ -3,6 +3,7 @@ package pl.kamiljurczak.registration.domains.repositories;
 import pl.kamiljurczak.registration.domains.Patient;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PatientRepository {
 
@@ -15,4 +16,6 @@ public interface PatientRepository {
     void deletePatient(Patient patient);
 
     List<Patient> getPatients();
+
+    Optional<Patient> getPatientByPesel(String pesel);
 }

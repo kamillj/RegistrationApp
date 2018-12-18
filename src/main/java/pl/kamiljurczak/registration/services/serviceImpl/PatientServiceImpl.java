@@ -8,8 +8,8 @@ import pl.kamiljurczak.registration.services.PatientService;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-@Service
 public class PatientServiceImpl implements PatientService {
 
     private PatientRepository patientRepository;
@@ -28,7 +28,6 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void updatePatient(Patient patient, Integer id) {
         patientRepository.updatePatient(patient, id);
-
     }
 
     @Override
@@ -44,5 +43,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> getPatients() {
        return patientRepository.getPatients();
+    }
+
+    @Override
+    public Optional<Patient> getPatientByPesel(String pesel) {
+        return patientRepository.getPatientByPesel(pesel);
     }
 }
