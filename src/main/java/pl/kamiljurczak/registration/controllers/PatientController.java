@@ -44,4 +44,10 @@ public class PatientController {
         model.addAttribute("patient", patient);
         return "patient";
     }
+
+    @RequestMapping(value = "/patient/delete/{id}")
+    public String deletePatient(@PathVariable("id") Integer id) {
+        patientService.deletePatient(patientService.getPatient(id));
+        return "redirect:/patients";
+    }
 }

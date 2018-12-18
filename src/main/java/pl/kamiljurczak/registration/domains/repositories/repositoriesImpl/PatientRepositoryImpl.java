@@ -38,7 +38,8 @@ public class PatientRepositoryImpl implements PatientRepository {
 
     @Override
     @Transactional
-    public void deletePatient(int id) {
+    public void deletePatient(Patient patient) {
+        em.remove(patient);
     }
 
     @Override

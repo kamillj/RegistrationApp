@@ -12,7 +12,7 @@ public interface PatientService {
 
     Patient getPatient(int id);
 
-    void deletePatient(int id);
+    void deletePatient(Patient patient);
 
     List<Patient> getPatients();
 }

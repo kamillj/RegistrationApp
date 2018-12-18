@@ -33,6 +33,7 @@
             <td th:text="${patient.zipCode}"></td>
             <td th:text="${patient.address}"></td>
             <td><a th:href="${'/patient/'+patient.id}">Szczegóły</a></span></td>
+            <td><a th:href="${'/patient/delete/'+patient.id}">Usuń</a></span></td>
         </tr>
         </tbody>
     </table>

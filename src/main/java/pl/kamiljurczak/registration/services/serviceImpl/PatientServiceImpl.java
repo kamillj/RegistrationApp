@@ -36,7 +36,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void deletePatient(int id) {
+    public void deletePatient(Patient patient) {
+        patientRepository.deletePatient(patient);
     }
 
     @Override
