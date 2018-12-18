@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Szczegóły pacjenta</title>
+    <title>Zapisz pacjenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
@@ -11,33 +11,39 @@
 </head>
 <body>
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <td>Nazwisko</td>
-            <td>Imię</td>
-            <td>Pesel</td>
-            <td>Państwo</td>
-            <td>Miejscowość</td>
-            <td>Kod pocztowy</td>
-            <td>Adres</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${patient.lastName}"></td>
-            <td th:text="${patient.firstName}"></td>
-            <td th:text="${patient.pesel}"></td>
-            <td th:text="${patient.country}"></td>
-            <td th:text="${patient.city}"></td>
-            <td th:text="${patient.zipCode}"></td>
-            <td th:text="${patient.address}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <a href="/patients">Powrót</a>
-    </div>
+    <form class="form-horizontal" th:object="${patient}" th:action="@{/patient/edit/{id}(id=${id})}" th:method="post">
+        <div class="form-group">
+            <label class="control-label">Imię:</label>
+            <input type="text" class="form-control" th:field="*{firstName}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Nazwisko:</label>
+            <input type="text" class="form-control" th:field="*{lastName}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">PESEL:</label>
+            <input type="text" class="form-control" th:field="*{pesel}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Państwo:</label>
+            <input type="text" class="form-control" th:field="*{country}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Miejscowość:</label>
+            <input type="text" class="form-control" th:field="*{city}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Kod pocztowy:</label>
+            <input type="text" class="form-control" th:field="*{zipCode}"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Adres:</label>
+            <input type="text" class="form-control" th:field="*{address}"/>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-default">Zapisz pacjenta</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

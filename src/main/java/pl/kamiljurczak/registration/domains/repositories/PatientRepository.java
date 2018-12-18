@@ -8,9 +8,9 @@ public interface PatientRepository {
 
     void savePatient(Patient patient);
 
-    void updatePatient(int id);
+    void updatePatient(Patient patient, Integer id);
 
-    Patient getPatient(int id);
+    Patient getPatient(Integer id);
 
     void deletePatient(Patient patient);
 

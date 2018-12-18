@@ -50,4 +50,10 @@ public class PatientController {
         patientService.deletePatient(patientService.getPatient(id));
         return "redirect:/patients";
     }
+
+    @RequestMapping(value = "/patient/edit/{id}", method = RequestMethod.POST)
+    public String updatePatient(@ModelAttribute Patient patient, @PathVariable Integer id) {
+        patientService.updatePatient(patient, id);
+        return "redirect:/patients";
+    }
 }

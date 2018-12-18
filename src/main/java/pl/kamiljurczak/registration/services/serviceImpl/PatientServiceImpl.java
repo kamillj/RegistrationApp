@@ -26,12 +26,13 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void updatePatient(int id) {
+    public void updatePatient(Patient patient, Integer id) {
+        patientRepository.updatePatient(patient, id);
 
     }
 
     @Override
-    public Patient getPatient(int id) {
+    public Patient getPatient(Integer id) {
         return patientRepository.getPatient(id);
     }
 

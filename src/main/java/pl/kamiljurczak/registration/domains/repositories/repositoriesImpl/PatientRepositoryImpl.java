@@ -28,11 +28,21 @@ public class PatientRepositoryImpl implements PatientRepository {
     }
 
     @Override
-    public void updatePatient(int id) {
+    @Transactional
+    public void updatePatient(Patient patient, Integer id) {
+        Patient patientTmp = em.find(Patient.class, id);
+        patientTmp.setFirstName(patient.getFirstName());
+        patientTmp.setLastName(patient.getLastName());
+        patientTmp.setPesel(patient.getPesel());
+        patientTmp.setCountry(patient.getCountry());
+        patientTmp.setCity(patient.getCity());
+        patientTmp.setZipCode(patient.getZipCode());
+        patientTmp.setAddress(patient.getAddress());
+        em.merge(patientTmp);
     }
 
     @Override
-    public Patient getPatient(int id) {
+    public Patient getPatient(Integer id) {
         return em.find(Patient.class, id);
     }
 
