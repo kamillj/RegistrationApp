@@ -32,12 +32,11 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient getPatient(int id) {
-        return null;
+        return patientRepository.getPatient(id);
     }
 
     @Override
     public void deletePatient(int id) {
-
     }
 
     @Override

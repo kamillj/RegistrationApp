@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Pacjenci</title>
+    <title>Szczegóły pacjenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
@@ -24,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each=" patient : ${patients}">
+        <tr>
             <td th:text="${patient.lastName}"></td>
             <td th:text="${patient.firstName}"></td>
             <td th:text="${patient.pesel}"></td>
@@ -32,12 +32,11 @@
             <td th:text="${patient.city}"></td>
             <td th:text="${patient.zipCode}"></td>
             <td th:text="${patient.address}"></td>
-            <td><a th:href="${'/patient/'+patient.id}">Szczegóły</a></span></td>
         </tr>
         </tbody>
     </table>
     <div class="row">
-        <a href="/patient/add">Dodaj nowego pacjenta</a>
+        <a href="/patients">Powrót</a>
     </div>
 </div>
 </body>

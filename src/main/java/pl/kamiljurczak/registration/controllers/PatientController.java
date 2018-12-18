@@ -3,9 +3,7 @@ package pl.kamiljurczak.registration.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.services.PatientService;
 
@@ -38,5 +36,12 @@ public class PatientController {
     public String savePatient(@ModelAttribute Patient patient) {
         patientService.savePatient(patient);
         return "redirect:/patients";
+    }
+
+    @RequestMapping("/patient/{id}")
+    public String getPatient(@PathVariable("id") Integer id, Model model) {
+        Patient patient = patientService.getPatient(id);
+        model.addAttribute("patient", patient);
+        return "patient";
     }
 }

@@ -33,12 +33,12 @@ public class PatientRepositoryImpl implements PatientRepository {
 
     @Override
     public Patient getPatient(int id) {
-        return null;
+        return em.find(Patient.class, id);
     }
 
     @Override
+    @Transactional
     public void deletePatient(int id) {
-
     }
 
     @Override
