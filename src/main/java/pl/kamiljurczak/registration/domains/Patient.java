@@ -1,6 +1,8 @@
 package pl.kamiljurczak.registration.domains;
 
-import pl.kamiljurczak.registration.validators.IsPeselValid;
+import pl.kamiljurczak.registration.services.PatientService;
+import pl.kamiljurczak.registration.validators.CorrectPesel;
+import pl.kamiljurczak.registration.validators.Unique;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,7 +23,8 @@ public class Patient {
     @Size(min = 1, message = "Nie wprowadzono nazwiska")
     private String lastName;
     @Column(unique = true)
-    @IsPeselValid
+    @CorrectPesel
+    @Unique(service = PatientService.class, fieldName = "pesel", message = "PESEL już istnieje w bazie danych")
     private String pesel;
     private String country;
     private String city;

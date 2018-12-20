@@ -1,29 +1,31 @@
 package pl.kamiljurczak.registration.validators;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.kamiljurczak.registration.services.PatientService;
+import org.springframework.context.ApplicationContext;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PeselValidator implements ConstraintValidator<IsPeselValid, String> {
+public class CorrectPeselValidator implements ConstraintValidator<CorrectPesel, String> {
 
-    private PatientService patientService;
+    private ApplicationContext applicationContext;
+
+    private FieldValueExists service;
+    private String fieldName;
 
     @Autowired
-    public void setPatientService(PatientService patientService) {
-        this.patientService = patientService;
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
 
     @Override
-    public void initialize(IsPeselValid constraintAnnotation) {
+    public void initialize(CorrectPesel correctPesel) {
     }
 
     @Override
-    public boolean isValid(String pesel, ConstraintValidatorContext constraintValidatorContext) {
-        if (!isPeselValid(pesel)) return false;
-//        if (!isPeselUnique(pesel)) return false;
-        return true;
+    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+            return isPeselValid(s);
     }
 
     private boolean isPeselValid(String pesel) {
@@ -46,9 +48,5 @@ public class PeselValidator implements ConstraintValidator<IsPeselValid, String>
             controlSum = 0;
         }
         return (controlSum == checkSum);
-    }
-
-    private boolean isPeselUnique(String pesel) {
-        return !patientService.getPatientByPesel(pesel).isPresent();
     }
 }

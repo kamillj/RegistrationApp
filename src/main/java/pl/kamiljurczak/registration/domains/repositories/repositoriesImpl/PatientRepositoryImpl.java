@@ -1,6 +1,5 @@
 package pl.kamiljurczak.registration.domains.repositories.repositoriesImpl;
 
-import org.springframework.stereotype.Repository;
 import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.domains.repositories.PatientRepository;
 
@@ -62,5 +61,11 @@ public class PatientRepositoryImpl implements PatientRepository {
         Patient patient = em.createQuery("from Patient p where p.pesel=:pesel", Patient.class)
                 .setParameter("pesel", pesel).getSingleResult();
         return Optional.ofNullable(patient);
+    }
+
+    @Override
+    public boolean isPeselExists(String pesel) {
+        return em.createQuery("from Patient p where p.pesel=:pesel", Patient.class)
+                .setParameter("pesel", pesel).getResultList().size() > 0;
     }
 }

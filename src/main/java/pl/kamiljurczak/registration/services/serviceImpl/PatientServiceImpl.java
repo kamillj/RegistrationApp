@@ -2,6 +2,7 @@ package pl.kamiljurczak.registration.services.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import pl.kamiljurczak.registration.domains.Patient;
 import pl.kamiljurczak.registration.domains.repositories.PatientRepository;
 import pl.kamiljurczak.registration.services.PatientService;
@@ -49,4 +50,20 @@ public class PatientServiceImpl implements PatientService {
     public Optional<Patient> getPatientByPesel(String pesel) {
         return patientRepository.getPatientByPesel(pesel);
     }
+
+    @Override
+    public boolean isPeselExists(String pesel) {
+        return patientRepository.isPeselExists(pesel);
+    }
+
+    @Override
+    public boolean fieldValueExists(Object value, String fieldName) throws UnsupportedOperationException {
+        Assert.notNull(fieldName);
+        if (!fieldName.equals("pesel")) {
+            throw new UnsupportedOperationException("Field name not supported");
+        }
+        return value != null && patientRepository.isPeselExists((String) value);
+    }
+
+
 }

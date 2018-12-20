@@ -18,4 +18,6 @@ public interface PatientRepository {
     List<Patient> getPatients();
 
     Optional<Patient> getPatientByPesel(String pesel);
+
+    boolean isPeselExists(String pesel);
 }
